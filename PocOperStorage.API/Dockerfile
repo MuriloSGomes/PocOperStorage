@@ -8,7 +8,7 @@ WORKDIR /src
 COPY ["./PocOperStorage.API.csproj", "PocOperStorage.API/"]
 RUN dotnet restore "PocOperStorage.API/PocOperStorage.API.csproj"
 COPY . .
-WORKDIR "/src/PocOperStorage.API"
+WORKDIR "PocOperStorage.API"
 RUN dotnet build "PocOperStorage.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
