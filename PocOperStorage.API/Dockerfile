@@ -6,9 +6,9 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
 WORKDIR /src
 COPY ["./PocOperStorage.API.csproj", "PocOperStorage.API/"]
-RUN dotnet restore "./PocOperStorage.API.csproj"
+RUN dotnet restore "PocOperStorage.API/PocOperStorage.API.csproj"
 COPY . .
-WORKDIR "PocOperStorage.API"
+WORKDIR "/src/PocOperStorage.API"
 RUN dotnet build "PocOperStorage.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
