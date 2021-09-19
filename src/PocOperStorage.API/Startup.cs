@@ -5,11 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.OpenApi.Models;
 
 namespace PocOperStorage.API
 {
@@ -26,11 +28,37 @@ namespace PocOperStorage.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSwaggerGen();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "API",
+                        Version = "v1",
+                        Description = "Uma API simples",
+                    });
+
+                var basePath = AppContext.BaseDirectory;
+                var assemblyName = System.Reflection.Assembly.GetEntryAssembly()?.GetName().Name;
+                var fileName = System.IO.Path.GetFileName(assemblyName + ".xml");
+
+                c.IncludeXmlComments(System.IO.Path.Combine(basePath, fileName));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Clima API");
+                c.RoutePrefix = "api/documentation";
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
