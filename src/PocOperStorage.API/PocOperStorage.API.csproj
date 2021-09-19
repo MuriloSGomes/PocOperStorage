@@ -5,6 +5,7 @@
     <UserSecretsId>4c58f2c9-895d-4777-bbd6-2d3eb03094b7</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
+    <ApplicationInsightsResourceId>/subscriptions/d4925785-fc3d-426f-bfa9-0b40cc135142/resourcegroups/VstsRG-senoMurilo-a71b/providers/Microsoft.Insights/components/PocOperStorageAPI</ApplicationInsightsResourceId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -16,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.15.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.13" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.6.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.6.3" />
