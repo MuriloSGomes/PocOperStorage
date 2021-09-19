@@ -23,7 +23,7 @@ steps:
     repository: 'storageopercontainer'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
-    buildContext: '**/PocOperStorage.API'
+    buildContext: '**'
     tags: |
       $(Build.BuildId)
       latest
