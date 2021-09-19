@@ -23,6 +23,7 @@ steps:
     repository: 'storageopercontainer'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
+    buildContext: '$(Build.Repository.LocalPath)'
     tags: |
       $(Build.BuildId)
       latest
