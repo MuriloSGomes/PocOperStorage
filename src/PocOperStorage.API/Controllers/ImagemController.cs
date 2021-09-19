@@ -34,12 +34,12 @@ namespace PocOperStorage.API.Controllers
         {
             var accountName = _configuration["StorageConfiguration:AccountName"];
             var accountKey = _configuration["StorageConfiguration:AccountKey"];
-            var containerName = _configuration["StorageConfiguration:ContainerName"];
+            var containerNames = _configuration["StorageConfiguration:ContainerName"];
 
             var storageCredentials = new StorageCredentials(accountName, accountKey);
             var storageAccount = new CloudStorageAccount(storageCredentials, true);
             var blobAzure = storageAccount.CreateCloudBlobClient();
-            var container = blobAzure.GetContainerReference(containerName);
+            var container = blobAzure.GetContainerReference(containerNames);
 
             var blob = container.GetBlockBlobReference(file.FileName);
             blob.Properties.ContentType = file.ContentType;
