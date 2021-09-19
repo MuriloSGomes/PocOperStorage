@@ -40,11 +40,6 @@ namespace PocOperStorage.API
                         Description = "Uma API simples",
                     });
 
-                var basePath = AppContext.BaseDirectory;
-                var assemblyName = System.Reflection.Assembly.GetEntryAssembly()?.GetName().Name;
-                var fileName = System.IO.Path.GetFileName(assemblyName + ".xml");
-
-                c.IncludeXmlComments(System.IO.Path.Combine(basePath, fileName));
             });
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_CONNECTIONSTRING"]);
         }
