@@ -55,7 +55,7 @@ namespace PocOperStorage.API
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Clima API");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "STORAGE API");
                 c.RoutePrefix = "api/documentation";
             });
 

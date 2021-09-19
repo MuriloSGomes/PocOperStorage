@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace PocOperStorage.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class ImagemController : ControllerBase
     {
         private readonly IConfiguration _configuration;

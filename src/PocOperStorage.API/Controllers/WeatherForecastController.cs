@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace PocOperStorage.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
