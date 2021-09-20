@@ -51,7 +51,7 @@ namespace PocOperStorage.API
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "STORAGE API");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "STORAGE BLOB API");
                 c.RoutePrefix = "api/documentation";
             });
 
